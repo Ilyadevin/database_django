@@ -17,6 +17,7 @@ class Command(BaseCommand):
                 Phones.price = int(row['price'])
                 Phones.release_date = row['release_date']
                 Phones.field = row['lte_exists']
+                Phones.slug = row['name']
                 Phones.save()
         return
 
