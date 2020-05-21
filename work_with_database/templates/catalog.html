@@ -9,14 +9,23 @@
         </div>
 
         <div class="sort-block">
-            {# Здесь должен быть раздел с сортировкой #}
+            <script>{% sorted(phones_name.values() %} Сортровка по названию</script>
+            <script>{% sorted(phones_price.values(), key=itemgetter(0)) %} Сортировка по возрастанию</script>
+            <script>{% sorted(phones_price.values(), key=itemgetter(0), reverse=True) %} Сортировка по убыванию</script>
         </div>
 
         <div class="content">
             <table>
-            {# for phone in phones_info #}
-                <tr>
-                </tr>
+            {% for id  in phones_id %}
+                <tr>{{ id }}</tr>
+                {% for name in phones_name %}
+                <tr>{{ name }}</tr>
+                {% for price in phones_price %}
+                <tr>price</tr>
+                {% for picture in phones_image %}
+                <tr>picture</tr>
+                {% endfor %}
+            {% endfor %}
             </table>
 
         </div>

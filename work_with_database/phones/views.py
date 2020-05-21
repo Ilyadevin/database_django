@@ -22,7 +22,7 @@ def show_product(request, slug):
     phones_price = Phones.price.all()
     phones_image = Phones.image.all()
     context = {
-        'phones_id': phones_id, 'phones_name': slug,
+        'phones_id': phones_id, 'phones_slug': slug,
         'phones_price': phones_price, 'phones_image': phones_image,
     }
     if request.GET.get(f'{slug}') == Phones.name.all():
