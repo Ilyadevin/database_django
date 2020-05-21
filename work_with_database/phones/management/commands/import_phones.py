@@ -9,15 +9,13 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         with open('phones.csv', 'r', encoding='utf8') as csv_file:
-            reader = csv.DictReader(csv_file, delimiter=';')
-            for row in reader:
-                Phones.id = int(row['id'])
-                Phones.name = row['name']
-                Phones.image = row['image']
-                Phones.price = int(row['price'])
-                Phones.release_date = row['release_date']
-                Phones.field = row['lte_exists']
-                Phones.slug = row['name']
-                Phones.save()
-        return
-
+            reader = csv.reader(csv_file, delimiter=';')
+            next(reader)
+            for row in parser:
+                if row['lte_exists'] is True:
+                    lte = 'Есть'
+                else:
+                    lte = 'Нет'
+                phone = Phones(id=int(row['id']), name=row['name'], image=row['image'], price=int(row['price']),
+                               release_date=row['release_date'], lte_exists=lte, slug=row['name'])
+                phone.save()

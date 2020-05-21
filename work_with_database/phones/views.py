@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from .models import Phones
-import csv
 
 
 def show_catalog(request):
     template = 'catalog.html'
+    name = Phones.name
+    slug = Phones.name
+
     context = {}
     return render(request, template, context)
 
