@@ -4,8 +4,6 @@ from .models import Phones
 
 def show_catalog(request):
     template = 'catalog.html'
-    name = Phones.name
-    slug = Phones.name
 
     context = {}
     return render(request, template, context)
