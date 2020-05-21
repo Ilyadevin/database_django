@@ -11,11 +11,11 @@ class Command(BaseCommand):
         with open('phones.csv', 'r', encoding='utf8') as csv_file:
             reader = csv.reader(csv_file, delimiter=';')
             next(reader)
-            for row in parser:
-                if row['lte_exists'] is True:
+            for row in reader:
+                if row[6] is True:
                     lte = 'Есть'
                 else:
                     lte = 'Нет'
-                phone = Phones(id=int(row['id']), name=row['name'], image=row['image'], price=int(row['price']),
-                               release_date=row['release_date'], lte_exists=lte, slug=row['name'])
+                phone = Phones(id=int(row[0]), name=row[1], image=row[3], price=int(row[4]),
+                               release_date=row[5], lte_exists=lte, slug=row[7])
                 phone.save()
