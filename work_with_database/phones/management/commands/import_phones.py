@@ -14,6 +14,7 @@ class Command(BaseCommand):
             reader = csv.reader(csv_file, delimiter=';')
             next(reader)
             for row in reader:
-                phone = Phones(id=int(row[0]), name=row[1], image=row[2], price=int(row[3]),
-                               release_date=datetime.strptime(row[4], '%Y-%m-%d'), lte_exists=row[5], slug=slugify(row[1]))
+                phone = Phones.objects.create(id=int(row[0]), name=row[1], image=row[2], price=int(row[3]),
+                                              release_date=datetime.strptime(row[4], '%Y-%m-%d'), lte_exists=row[5],
+                                              slug=slugify(row[1]))
                 phone.save()

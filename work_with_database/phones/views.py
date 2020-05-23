@@ -4,10 +4,7 @@ from .models import Phones
 
 def show_catalog(request):
     template = 'catalog.html'
-    phones_id = Phones.id.all()
-    phones_name = Phones.name.all()
-    phones_price = Phones.price.all()
-    phones_image = Phones.image.all()
+    phone_list = Phones.objects
     context = {
         'phones_id': phones_id, 'phones_name': phones_name,
         'phones_price': phones_price, 'phones_image': phones_image,
@@ -17,12 +14,9 @@ def show_catalog(request):
 
 def show_product(request, slug):
     template = 'product.html'
-    phones_id = Phones.id.all()
-    slug = Phones.slug.all()
-    phones_price = Phones.price.all()
-    phones_image = Phones.image.all()
+    phone_list = Phones.objects
     context = {
-        'phones_id': phones_id, 'phones_slug': slug,
+        'phones_id': phones_list['slug'], 'phones_slug': slug,
         'phones_price': phones_price, 'phones_image': phones_image,
     }
     if request.GET.get(f'{slug}') == Phones.name.all():
