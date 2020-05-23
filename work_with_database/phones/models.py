@@ -5,9 +5,10 @@ MAX_LENGTH_WORD = 100
 
 class Phones(models.Model):
     slug = models.SlugField()
-    id = models.IntegerField(primary_key=True)
+    id_p = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=MAX_LENGTH_WORD)
     price = models.IntegerField()
     image = models.ImageField(max_length=MAX_LENGTH_WORD)
     release_date = models.DateField(max_length=MAX_LENGTH_WORD)
     lte_exists = models.BooleanField()
+    # objects = id_p, slug, name, price, image, release_date, lte_exists
