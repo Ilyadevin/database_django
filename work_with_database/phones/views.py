@@ -33,9 +33,8 @@ def show_catalog(request):
 def show_product(request, slug):
     template = 'product.html'
     context = {
-        'phones_id': Phones.id_p, 'phones_name': Phones.name,
-        'phones_price': Phones.price, 'phones_image': Phones.image,
-        'phones_slug': Phones.slug
+        'id': Phones.id_p, 'name': Phones.name, 'price': Phones.price, 'image': Phones.image, 'slug': Phones.slug,
+        'lte': Phones.lte_exists, 'date': Phones.release_date,
     }
     if request.GET.get(slug) == Phones.slug:
         return render(request, template, context=context)
