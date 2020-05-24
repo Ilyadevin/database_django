@@ -18,7 +18,7 @@ from django.urls import path
 import phones.views
 
 urlpatterns = [
-    path('our_site/admin/', admin.site.urls),
-    path('our_site/catalog/', phones.views.show_catalog),
-    path('our_site/catalog/<slug:slug>/', phones.views.show_product),
+    path('admin/', admin.site.urls),
+    path('catalog/', phones.views.show_catalog),
+    path('catalog/<slug:slug>/', phones.views.show_product),
 ]

@@ -4,28 +4,23 @@ from .models import Phones
 
 def show_catalog(request):
     template = 'catalog.html'
+    phone_objects = Phones.objects.all()
     context = {
-        'phones_id': Phones.id_p, 'phones_name': Phones.name,
-        'phones_price': Phones.price, 'phones_image': Phones.image,
-    }
-    if request.GET.get('sort_by_name') is True:
-        context = {
-            'phones_id': Phones.id_p, 'phones_name': sorted(Phones.name),
-            'phones_price': Phones.price, 'phones_image': Phones.image,
-        }
+        'phones_objects': phone_objects}
+    if request.GET.get('order_by=') == 'by_name':
+        phone_objects = Phones.objects.all().order_by('name')
+        context = {'phones_objects': phone_objects}
         return render(request, template, context=context)
     elif request.GET.get('sort_by_cost_0') is True:
-        context = {
+        return render(request, template, context={
             'phones_id': Phones.id_p, 'phones_name': Phones.name,
             'phones_price': sorted(Phones.price), 'phones_image': Phones.image,
-        }
-        return render(request, template, context=context)
+        })
     elif request.GET.get('sort_by_cost_1') is True:
-        context = {
+        return render(request, template, context={
             'phones_id': Phones.id_p, 'phones_name': Phones.name,
             'phones_price': sorted(Phones.price, reverse=True), 'phones_image': Phones.image,
-        }
-        return render(request, template, context=context)
+        })
     else:
         return render(request, template, context=context)
 
