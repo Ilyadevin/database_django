@@ -5,17 +5,18 @@
 {% block content %}
     <div class="container">
         <div class="header">
-            <h1>Телефон</h1>
+        {% for product1 in phones_objects %}
+            <h1><a href="?slug={{ product1.slug }}">Телефон - {{ product1.name }}</a></h1>
+        {{ endfor }}
         </div>
         <div class="content">
-            <table>
-                <tr>{{ name }}</tr>
-                <tr>{{ price }}</tr>
-                <tr>{{ image }}</tr>
-                <tr>{{ lte }}</tr>
-                <tr>{{ date }}</tr>
-            </table>
-
+            {% for product in phones_objects %}
+            {{ product.name }}
+            {{ product.price }}
+            <a href="{{ id.image }}" target="_blank"><img src="{{ id.image }}"></a>
+            {{ product.lte_exists }}
+            {{ product.release_date }}
+            {{ endfor }}
         </div>
     </div>
 {% endblock %}
