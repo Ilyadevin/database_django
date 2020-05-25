@@ -8,7 +8,7 @@
             <h1><a href="/catalog">Каталог</a></h1>
         </div>
         <div class="sort-block">
-            <h5><a> Сортировка по:  </a>  <a href="?by_name/">названию </a><a href="by_cost_asc"> начиная с дешевых </a><a href="by_cost_desc"> начиная с дорогих </a></h5>
+            <h5><a> Сортировка по:  </a>  <a href="?order_by=by_name">названию </a><a href="?order_by=by_cost_asc"> начиная с дешевых </a><a href="?order_by=by_cost_desc"> начиная с дорогих </a></h5>
         </div>
         <div class="content">
             {% for id  in phones_objects %}
