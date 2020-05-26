@@ -32,11 +32,11 @@ def show_catalog(request):
 
 
 def show_product(request, slug):
-    template_product = 'product.html'
+    template = 'product.html'
     phone = Phones.objects.get(slug=slug)
     context = {
         'phone_name': phone.name, 'phone_image': phone.image,
         'phone_lte': phone.lte_exists, 'phone_price': phone.price,
         'phone_release_date': phone.release_date
     }
-    return render(request, template_name=template_product, context=context)
+    return render(request, template_name=template, context=context)
