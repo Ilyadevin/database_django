@@ -11,4 +11,3 @@ class Phones(models.Model):
     image = models.ImageField(max_length=MAX_LENGTH_WORD)
     release_date = models.DateField(max_length=MAX_LENGTH_WORD)
     lte_exists = models.BooleanField()
-    # objects = id_p, slug, name, price, image, release_date, lte_exists

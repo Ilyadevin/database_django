@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Phones
+from django.shortcuts import render, get_object_or_404
 
 
 def show_catalog(request):
@@ -21,7 +22,7 @@ def show_catalog(request):
         }
         return render(request, template, context=context)
     elif request.GET.get('order_by') == 'by_cost_desc':
-        phone_objects = reversed(Phones.objects.all().order_by('price'))
+        phone_objects = Phones.objects.all().order_by('-price')
         context = {
             'phones_objects': phone_objects
         }
@@ -31,13 +32,11 @@ def show_catalog(request):
 
 
 def show_product(request, slug):
-    template = 'product.html'
-    phone_objects = Phones.objects.all()
+    template_product = 'product.html'
+    phone = Phones.objects.get(slug=slug)
     context = {
-        'phones_objects': phone_objects
+        'phone_name': phone.name, 'phone_image': phone.image,
+        'phone_lte': phone.lte_exists, 'phone_price': phone.price,
+        'phone_release_date': phone.release_date
     }
-    for i in phone_objects:
-        if request.GET.get('slug') == i.slug:
-            return render(request, template, context=context)
-        else:
-            return render(request, template, context=context)
+    return render(request, template_name=template_product, context=context)
