@@ -35,7 +35,10 @@ def show_catalog(request):
 
 def show_product(request, slug):
     template = 'product.html'
-    phone = Phones.objects.get(slug=slug)
+    try:
+        phone = Phones.objects.get(slug=slug)
+    except Exception as error:
+        print(error)
     context = {
         'phone_name': phone.name, 'phone_image': phone.image,
         'phone_lte': phone.lte_exists, 'phone_price': phone.price,
