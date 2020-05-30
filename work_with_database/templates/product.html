@@ -5,14 +5,14 @@
 {% block content %}
     <div class="container">
         <div class="header">
-            <h1><a href="catalog/<slug:slug>/"> Телефон</a></h1>
+            <h1><a href="catalog/{{ the_url }}"> Телефон</a></h1>
         </div>
         <div class="content">
-            <a href="{{ phone_image }}" target="_blank"><img src="{{ phone_image }}"></a>
             <h1>{{ phone_name }}</h1>
-            <h3>{{ phone_price }}</h3>
-            <h3>{{ phone_lte }}</h3>
-            <h3>{{ phone_release_date }}</h3>
+            <h3>Цена - {{ phone_price }}</h3>
+            <a href="{{ phone_image }}" target="_blank"><img src="{{ phone_image }}"></a>
+            <h3>Наличие LTE(4G) - {{ phone_lte }}</h3>
+            <h3>Дата выхода - {{ phone_release_date }}</h3>
             {{ endfor }}
         </div>
     </div>

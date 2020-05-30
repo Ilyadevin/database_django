@@ -41,4 +41,4 @@ def show_product(request, slug):
         'phone_lte': phone.lte_exists, 'phone_price': phone.price,
         'phone_release_date': phone.release_date
     }
-    return render(reverse(request), template_name=template, context=context)
+    return render(request, template_name=template, context=context)

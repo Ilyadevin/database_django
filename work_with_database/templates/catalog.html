@@ -11,10 +11,10 @@
         </div>
         <div class="content">
             {% for id  in phones_objects %}
-            {% url 'show_product' as the_url %}
-            <h1><a href="{{id.slug}}">{{ id.name }}</a></h1>
-            <h3>Стоимость: {{ id.price }}</h3>
-            <a href="{{ id.image }}" target="_blank"><img src="{{ id.image }}"></a>
+                {% url 'show_product' slug=id.slug as the_url %}
+                    <h1><a href="{{ the_url }}">{{ id.name }}</a></h1>
+                    <h3>Стоимость: {{ id.price }}</h3>
+                    <a href="{{ id.image }}" target="_blank"><img src="{{ id.image }}"></a>
             {% endfor %}
         </div>
     </div>
